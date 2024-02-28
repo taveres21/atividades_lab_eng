@@ -2,10 +2,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Primeira Semana</title>
 </head>
 <body>
     <h1>Atividades da Primeira Semana</h1>
+    <form>
+        <input id="inputUser" type="text" name="inputUser">
+        <button onclick="addToLista()">Adicionar</button>
+    </form>
+    <ul id="lista"></ul>
+    
     <a href="index.html">Voltar</a>
+    <script>
+        let lista = [];
+        for (let i = 0; i < lista.length; i++) {
+            let item = document.createElement('li');
+            let itemValue = document.createTextNode(lista[i]);
+            item.appendChild(itemValue);
+            document.getElementById('lista').appendChild(item);
+        }
+
+        function addToLista() {
+            console.log(document.getElementById('inputUser').value);
+            lista.push(document.getElementById('inputUser').value);
+        }
+    </script>
 </body>
 </html>
