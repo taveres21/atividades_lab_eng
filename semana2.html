@@ -6,26 +6,8 @@
 </head>
 <body>
     <h1>Atividades da Segunda Semana</h1>
-    <form>
-        <input id="inputUser" type="text" name="inputUser">
-        <button onclick="addToLista()">Adicionar</button>
-    </form>
-    <ul id="lista"></ul>
-    
-    <a href="index.html">Voltar</a>
-    <script>
-        let lista = [];
-        for (let i = 0; i < lista.length; i++) {
-            let item = document.createElement('li');
-            let itemValue = document.createTextNode(lista[i]);
-            item.appendChild(itemValue);
-            document.getElementById('lista').appendChild(item);
-        }
-
-        function addToLista() {
-            console.log(document.getElementById('inputUser').value);
-            lista.push(document.getElementById('inputUser').value);
-        }
-    </script>
+    <ul>
+        <li><a href="./semana2/atividade1.html">Atividade 1</a></li>
+    </ul>
 </body>
 </html>
