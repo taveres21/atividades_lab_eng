@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relógio</title>
+</head>
+<body>
+
+<div id="relogio"></div>
+
+<script>
+function atualizarRelogio() {
+    const dataAtual = new Date();
+    const horas = String(dataAtual.getHours()).padStart(2, '0');
+    const minutos = String(dataAtual.getMinutes()).padStart(2, '0');
+    const segundos = String(dataAtual.getSeconds()).padStart(2, '0');
+    const horario = `${horas}:${minutos}:${segundos}`;
+    document.getElementById('relogio').textContent = horario;
+    setTimeout(atualizarRelogio, 1000); // Atualiza o relógio a cada segundo
+}
+
+// Inicia o relógio
+atualizarRelogio();
+</script>
+<br><a href="../index.html">Voltar</a>
+</body>
+</html>
