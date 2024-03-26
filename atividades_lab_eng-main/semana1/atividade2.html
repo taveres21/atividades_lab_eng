@@ -1,0 +1,30 @@
+<script>
+
+    let number = prompt('Digite um número');
+    let i = 2;
+
+    if (!Number.isNaN(Number(number))) {
+        if(PrimeCheck(number)) {
+            alert('É primo');
+        } else {
+            alert('Não é primo');
+        }
+    }
+
+    function PrimeCheck(value) {
+        if (value == 0 || value == 1) {
+            return false;
+        }
+    
+        if (value == i)
+            return true;
+        
+        if (value % i == 0) {
+            return false;
+        }
+        i++;
+        return PrimeCheck(value);
+    }
+</script>
+<a href="../index.html">Voltar</a>
+
