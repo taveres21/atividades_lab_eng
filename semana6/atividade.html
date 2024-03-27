@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="calculator">
+    
+</div>
+
+<script>
+    function createButton(value, onClickFunction) {
+        const button = document.createElement('input');
+        button.type = 'button';
+        button.value = value;
+        button.onclick = onClickFunction;
+        return button;
+    }
+
+    function addToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+        var display = document.getElementById('display');
+        try {
+            display.value = eval(display.value);
+        } catch (error) {
+            display.value = 'Erro';
+        }
+    }
+
+    const calculatorDiv = document.querySelector('.calculator');
+    const display = document.createElement('input');
+    display.setAttribute('id','display');
+    calculatorDiv.appendChild(display);
+
+    
+    display.disabled = true;
+
+    calculatorDiv.appendChild(createButton('7', () => addToDisplay('7')));
+    calculatorDiv.appendChild(createButton('8', () => addToDisplay('8')));
+    calculatorDiv.appendChild(createButton('9', () => addToDisplay('9')));
+    calculatorDiv.appendChild(createButton('/', () => addToDisplay('/')));
+    calculatorDiv.appendChild(document.createElement('br'));
+
+    calculatorDiv.appendChild(createButton('4', () => addToDisplay('4')));
+    calculatorDiv.appendChild(createButton('5', () => addToDisplay('5')));
+    calculatorDiv.appendChild(createButton('6', () => addToDisplay('6')));
+    calculatorDiv.appendChild(createButton('*', () => addToDisplay('*')));
+    calculatorDiv.appendChild(document.createElement('br'));
+
+    calculatorDiv.appendChild(createButton('1', () => addToDisplay('1')));
+    calculatorDiv.appendChild(createButton('2', () => addToDisplay('2')));
+    calculatorDiv.appendChild(createButton('3', () => addToDisplay('3')));
+    calculatorDiv.appendChild(createButton('-', () => addToDisplay('-')));
+    calculatorDiv.appendChild(document.createElement('br'));
+
+    calculatorDiv.appendChild(createButton('0', () => addToDisplay('0')));
+    calculatorDiv.appendChild(createButton('.', () => addToDisplay('.')));
+    calculatorDiv.appendChild(createButton('=', () => calculate()));
+    calculatorDiv.appendChild(createButton('+', () => addToDisplay('+')));
+    calculatorDiv.appendChild(document.createElement('br'));
+
+    calculatorDiv.appendChild(createButton('C', () => clearDisplay()));
+</script>
+
+</body>
+</html>
