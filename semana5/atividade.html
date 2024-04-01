@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de Pessoas</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    #contador {
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+</head>
+<body>
+
+<div id="contador">
+    <h2>Contador de Pessoas</h2> <button onclick="Reset()">Resetar</button>
+    <p>Total de pessoas: <span id="total_pessoas">0</span></p>
+    <p>
+        Homens: <span id="total_homens">0</span>
+        <button onclick="adicionarHomem()">+</button>
+        <button onclick="removerHomem()">-</button>
+    </p>
+    <p>
+        Mulheres: <span id="total_mulheres">0</span>
+        <button onclick="adicionarMulher()">+</button>
+        <button onclick="removerMulher()">-</button>
+    </p>
+    
+</div>
+
+<script>
+    let totalPessoas = 0;
+    let totalHomens = 0;
+    let totalMulheres = 0;
+
+    function adicionarHomem() {
+        totalPessoas++;
+        totalHomens++;
+        atualizarContagem();
+    }
+
+    function adicionarMulher() {
+        totalPessoas++;
+        totalMulheres++;
+        atualizarContagem();
+    }
+
+    function removerHomem() {
+        if (totalHomens > 0) {
+            totalPessoas--;
+            totalHomens--;
+            atualizarContagem();
+        }
+    }
+
+    function removerMulher() {
+        if (totalMulheres > 0) {
+            totalPessoas--;
+            totalMulheres--;
+            atualizarContagem();
+        }
+    }
+
+    function atualizarContagem() {
+        document.getElementById("total_pessoas").textContent = totalPessoas;
+        document.getElementById("total_homens").textContent = totalHomens;
+        document.getElementById("total_mulheres").textContent = totalMulheres;
+    }
+
+    function Reset() {
+        totalPessoas = 0;
+        totalHomens = 0;
+        totalMulheres = 0;   
+        
+        atualizarContagem();
+    }
+</script>
+
+</body>
+</html>
