@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+<body>
+    <form>
+        <label for="nome">Nome:</label>
+        <input id="nome" name="nome" type="text" placeholder="Digite seu nome completo">
+        <br>
+        <br>
+        <label for="email">Email:</label> 
+        <input id="email" name="email" type="text" placeholder="fulano.com">
+        <br>
+        <br>
+        <label for="dataNasc">Data de Nascimento</label>
+        <input id="dataNasc" name="dataNasc" type="date">
+        <br>
+        <br>
+        <label for="telFixo">Telefone Fixo:</label>
+        <input id="telFixo" type="text" name="telFixo" placeholder="(99)9999-9999">
+        <br>
+        <br>
+        <label for="telCel">Telefone Celular:</label>
+        <input id="telCel" type="text" name="telCel" placeholder="(99)9999-9999">
+        <br>
+        <br>
+        <label for="tipo2">Aluno</label>
+        <input id="tipo2" type="radio" name="tipo" onclick="javascript:Check()">
+        <label for="tipo1">Professor</label>
+        <input id="tipo1" type="radio" name="tipo" onclick="javascript:Check()">
+        <br>
+        <br>
+        <label for="area" id="lbArea">Área:</label>
+        <input  type="text" id="area" name="area" placeholder="Digite sua área de atuação">
+        <br>
+        <br>
+        <label for="curso" id="lbCurso">Curso:</label>
+        <input type="text" id="curso" name="curso" placeholder="Digite seu curso">
+        <br>
+        <br>
+        <label for="matricula" id="lbMatricula">Matrícula:</label>
+        <input type="text" id="matricula" name="matricula" placeholder="Digite sua matrícula">
+        <br>
+        <br>
+        <label for="Lattes" id="lbLattes">Lattes:</label>
+        <input type="text" id="lattes" name="Lattes" placeholder="Digite aqui o endereço para seu Lattes">
+        <br>
+        <br>
+        <button onclick="Enviar()">Enviar</button>
+        <button onclick="Redefinir()">Redefinir</button>
+    </form>
+    <div id="dados"></div>
+    <script>
+        function Pessoa() {
+            let nome,email,dataNasc,telFixo,telCel,matricula; 
+
+            this.setNome = function(vNome) {
+                this.nome = vNome;
+            }
+            this.getNome = function() {
+                return this.nome;
+            }
+            this.setEmail = function(vEmail) {
+                this.email = vEmail;
+            }
+            this.getEmail = function() {
+                return this.email;
+            }
+            this.setDataNasc = function(vDataNasc) {
+                this.dataNasc = vDataNasc;
+            }
+            this.getDataNasc = function() {
+                return this.dataNasc;
+            }
+            this.setTelFixo = function(vTelFixo) {
+                this.telFixo = vTelFixo;
+            }
+            this.getTelFixo = function() {
+                return this.telFixo;
+            }
+            this.setTelCel = function(vTelCel) {
+                this.telCel = vTelCel;
+            }
+            this.setMatricula = function(vMatricula) {
+                this.matricula = vMatricula;
+            }
+            this.getMatricula = function() {
+                return this.matricula;
+            }
+        }
+        function Aluno() {
+            Pessoa.call(this);
+
+            let curso;
+            
+            this.setCurso = function(vCurso) {
+                this.curso = vCurso;
+            }
+            this.getCurso = function () {
+                return this.curso;
+            }
+        }
+        function Professor() {
+            Pessoa.call(this);
+            let area, lattes;
+
+            this.setArea = function(vArea) {
+                this.area = vArea;
+            }
+            this.getArea = function() {
+                return this.area;
+            }
+            this.setLattes = function(vLattes) {
+                this.lattes = vLattes;
+            }
+            this.getLattes = function() {
+                return this.lattes;
+            }
+        }
+
+        function Check() {
+            if (document.getElementById('tipo2').checked) {
+                document.getElementById('lbCurso').style.display = 'block';
+                document.getElementById('curso').style.display = 'block';
+                document.getElementById('lbArea').style.display = 'none';
+                document.getElementById('area').style.display = 'none';
+                document.getElementById('lbLattes').style.display = 'none';
+                document.getElementById('lattes').style.display = 'none';
+            } else {
+                document.getElementById('lbCurso').style.display = 'none';
+                document.getElementById('curso').style.display = 'none';
+                document.getElementById('lbArea').style.display = 'block';
+                document.getElementById('area').style.display = 'block';
+                document.getElementById('lbLattes').style.display = 'block';
+                document.getElementById('lattes').style.display = 'block';
+            }
+        }
+
+        function Enviar() {
+            if (document.getElementById('tipo2').checked) {
+                let Aluno1 = new Aluno();
+                Aluno1.setNome(document.getElementById('nome').value);
+                Aluno1.setEmail(document.getElementById('email').value);
+                Aluno1.setDataNasc(document.getElementById('dataNasc').value);
+                Aluno1.setTelFixo(document.getElementById('telFixo').value);
+                Aluno1.setTelCel(document.getElementById('telCel').value);
+                Aluno1.setMatricula(document.getElementById('matricula').value);
+                Aluno1.setCurso(document.getElementById('curso').value);
+
+                exibirDados(Aluno1);
+            }
+            else if (document.getElementById('tipo1').checked) {
+                let Professor1 = new Professor();
+                Professor1.setNome('teste');
+                Professor1.setEmail(document.getElementById('email').value);
+                Professor1.setDataNasc(document.getElementById('dataNasc').value);
+                Professor1.setTelFixo(document.getElementById('telFixo').value);
+                Professor1.setTelCel(document.getElementById('telCel').value);
+                Professor1.setMatricula(document.getElementById('matricula').value);
+                Professor1.setArea(document.getElementById('area').value);
+                Professor1.setLattes(document.getElementById('lattes').value);
+
+                exibirDados(Professor1);
+            }
+        }
+
+        // Função para exibir dados
+        function exibirDados(pessoa) {
+            let dadosDiv = document.getElementById('dados');
+            dadosDiv.innerHTML = ''; 
+            let dadosString = '';
+            dadosString += '<h2>Dados</h2>';
+            dadosString += '<p><strong>Nome:</strong> ' + pessoa.getNome() + '</p>';
+            dadosString += '<p><strong>Email:</strong> ' + pessoa.getEmail() + '</p>';
+            dadosString += '<p><strong>Data de Nascimento:</strong> ' + pessoa.getDataNasc() + '</p>';
+            dadosString += '<p><strong>Telefone Fixo:</strong> ' + pessoa.getTelFixo() + '</p>';
+            dadosString += '<p><strong>Telefone Celular:</strong> ' + pessoa.getTelCel() + '</p>';
+            dadosDiv.innerHTML = dadosString;
+        }
+
+        function Redefinir() {
+            document.getElementById('nome').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('dataNasc').value = '';
+            document.getElementById('telFixo').value = '';
+            document.getElementById('telCel').value = '';
+            document.getElementById('matricula').value = '';
+            document.getElementById('curso').value = '';
+            document.getElementById('area').value = '';
+            document.getElementById('lattes').value = '';
+            document.getElementById('dados').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
